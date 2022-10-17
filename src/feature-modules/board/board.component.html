@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-auto add-new-node">
+      <app-node [actionsTpl]="addNewNodeTpl"> </app-node>
+    </div>
+
+    <div *ngFor="let node of nodes; trackBy: trackByFn" class="col col-md-auto">
+      <app-node [node]="node" [actionsTpl]="actionsTpls">
+        <ng-container cardTitle> {{ node.author }} </ng-container>
+        <ng-container cardContent>
+          {{ node.content | subStr }}
+        </ng-container>
+        <ng-container cardDate>
+          {{ node.date | date: "medium" }}
+        </ng-container></app-node
+      >
+    </div>
+  </div>
+</div>
+
+<ng-template #addNewNodeTpl>
+  <div class="d-grid gap-2">
+    <button (click)="onAddNewNode()" class="btn btn-secondary">
+      Add New Node
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #actionsTpls let-node>
+  <div class="footer-actions d-grid gap-2 d-md-flex justify-content-md-end">
+    <button
+      (click)="onDeleteItem(node.id)"
+      class="btn btn-danger me-md-2"
+      type="button"
+    >
+      Delete
+    </button>
+    <button
+      (click)="onUpdateNewNode(node)"
+      class="btn btn-primary"
+      type="button"
+    >
+      Edit
+    </button>
+  </div>
+</ng-template>

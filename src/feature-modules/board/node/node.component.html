@@ -1,0 +1,22 @@
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">
+      <ng-content select="[cardTitle]"> </ng-content>
+    </h5>
+
+    <p class="card-text">
+      <ng-content select="[cardContent]"> </ng-content>
+    </p>
+
+    <p>
+      <ng-content select="[cardDate]"> </ng-content>
+    </p>
+
+    <ng-container *ngIf="actionsTpl">
+      <ng-container
+        [ngTemplateOutlet]="actionsTpl"
+        [ngTemplateOutletContext]="{ $implicit: node }"
+      ></ng-container>
+    </ng-container>
+  </div>
+</div>

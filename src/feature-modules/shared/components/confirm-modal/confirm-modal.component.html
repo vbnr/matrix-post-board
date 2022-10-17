@@ -1,0 +1,34 @@
+<ng-container>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ modal?.title }}</h4>
+
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="onClose()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <ng-content select="[modalBody]"> </ng-content>
+  </div>
+
+  <div class="modal-footer border-top">
+    <div>
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-padded btn-radius btn-block"
+        (click)="onClose()"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <div>
+      <ng-content select="[confBtn]"> </ng-content>
+    </div>
+  </div>
+</ng-container>

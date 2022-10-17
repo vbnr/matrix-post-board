@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Login</h2>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+
+      <div *ngIf="form.dirty && form.controls.email.errors?.['required']">
+        <app-error-form-control> Email is required </app-error-form-control>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+        formControlName="password"
+      />
+
+      <div *ngIf="form.dirty && form.controls.password.errors?.['required']">
+        <app-error-form-control> Password is required </app-error-form-control>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary matrix-login-btn">
+      Submit
+    </button>
+  </form>
+</div>
